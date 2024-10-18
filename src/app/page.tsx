@@ -88,7 +88,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.h2
-                className="mt-8 text-[#DBDADA]  w-[70%] font-extrabold text-2xl text-center"
+                className="mt-8 text-[#DBDADA]  w-[60%] font-extrabold text-2xl text-center"
                 initial={{y: 50, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
                 transition={{duration: 0.5, delay: 0.2}}
@@ -114,7 +114,7 @@ export default function Home() {
                                 className="bg-white text-cyan-600 hover:bg-cyan-100 hover:text-cyan-700 text-lg px-8 py-6 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
                             >
                                 <Sparkles className="h-5 w-5 mr-2"/>
-                                Add to Waitlist
+                                Join to Waitlist
                             </Button>
                         </motion.div>
                     ) : (
