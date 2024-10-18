@@ -9,11 +9,23 @@ import {cn} from "@/lib/utils";
 import {SpinnerIcon} from "@/lib/icons";
 import Link from "next/link";
 
+interface IValidationError {
+    attr: string
+    code: string
+    detail: string
+}
+
+interface IResponse {
+    type: "validation_error"
+    errors: IValidationError[]
+}
+
 export default function Home() {
     // States
     const [email, setEmail] = useState('')
     const [isFormOpen, setIsFormOpen] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isSubmittedAlready, setIsSubmittedAlready] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
 
 
@@ -39,7 +51,7 @@ export default function Home() {
             const endpoint = 'https://ai.moneymentor.uz/api/v1/accounts/waitlist/';
 
             // Using SWR mutate for submission
-            await fetch(endpoint, {
+            const res = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,16 +59,33 @@ export default function Home() {
                 body: JSON.stringify({email}),
             });
 
-            // Handle successful submission
-            setIsSubmitted(true);
-            setTimeout(() => {
-                setIsFormOpen(false);
-                setIsSubmitted(false);
-                setEmail('');
-            }, 4000);
+            if (res.status === 400) {
+                const json = await res.json() as IResponse;
+                if (json.type === "validation_error"
+                    // (json.errors as IValidationError[]).length > 0 &&
+                    // (json.errors as IValidationError[]).find(e => e.code === "unique")
+                ) {
+                    // Handle notification submission
+                    setIsSubmittedAlready(true)
+                    setTimeout(() => {
+                        setIsFormOpen(false);
+                        setIsSubmittedAlready(false);
+                        setEmail('');
+                    }, 4000);
+                }
+            } else {
+                // Handle successful submission
+                setIsSubmitted(true);
+                setTimeout(() => {
+                    setIsFormOpen(false);
+                    setIsSubmitted(false);
+                    setEmail('');
+                }, 4000);
+            }
+
         } catch (error) {
             console.error('Error submitting email:', error);
-            // Optionally handle error here (e.g., show an error message)
+            // console.log(error?.[0])
         } finally {
             setIsLoading(false);
         }
@@ -126,7 +155,7 @@ export default function Home() {
                             transition={{duration: 0.3, delay: 0}}
                             className="w-full max-w-md mt-10"
                         >
-                            {!isSubmitted ? (
+                            {!isSubmitted && !isSubmittedAlready ? (
                                 <form onSubmit={handleSubmit}
                                       className="flex bg-re-300 flex-col items-center space-y-4">
                                     <div className="flex w-full">
@@ -176,7 +205,10 @@ export default function Home() {
                                     className="text-white text-center"
                                 >
                                     <Sparkles className="h-12 w-12 mx-auto mb-4 text-yellow-300"/>
-                                    <h3 className="text-2xl font-bold mb-2">Thank you for joining!</h3>
+                                    <h3 className="text-2xl font-bold mb-2">{
+                                        isSubmittedAlready ? "You have already joined!" :
+                                            "Thank you for joining!"
+                                    }</h3>
                                     <p className="text-lg">We&apos;ll be in touch soon with exclusive updates.</p>
                                 </motion.div>
                             )}
