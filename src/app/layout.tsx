@@ -22,6 +22,7 @@ const geistFont = localFont({
 
 export const metadata: Metadata = {
     title: "Ch-ai",
+    icons: "/images/favicon.png?v=2",
     description: "This is a ch-ai app",
 };
 

@@ -10,7 +10,7 @@ body {
 .app-container {
     background-size: cover;
     background-position: center 90%;
-    background-image: url("../../public/images/bg-image.png");
+    background-image: url("../../public/images/bg-image.jpg");
     background-repeat: no-repeat;
 
     /* Overlay a radial gradient that darkens the edges */
@@ -20,7 +20,7 @@ body {
             circle,
             rgba(0, 0, 0, 0) 50%, /* Center is transparent */ rgba(0, 0, 0, 0.7) 100% /* Edges are darker */
     ),
-    url("../../public/images/bg-image.png"); /* Your background image */
+    url("../../public/images/bg-image.jpg"); /* Your background image */
 }
 
 @layer utilities {
