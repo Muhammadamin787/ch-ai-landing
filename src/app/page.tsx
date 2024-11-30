@@ -8,6 +8,7 @@ import {useState} from "react";
 import {cn} from "@/lib/utils";
 import {SpinnerIcon} from "@/lib/icons";
 import Link from "next/link";
+import Image from "next/image";
 
 interface IValidationError {
     attr: string
@@ -95,15 +96,18 @@ export default function Home() {
         <div
             className="h-screen flex items-center justify-center flex-col app-container">
             <motion.h1
-                className="text-white -mt-12 tracking-wide leading-tight font-extrabold text-5xl w-[60%] text-center"
+                className="text-white -mt-12 tracking-wide leading-tight text-5xl w-[60%] text-center"
                 initial={{y: 50, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
                 transition={{duration: 0.9}}
             >
-                <div className="relative inline-block ">
-                    <Link className="relative z-10 " href={"https://ch.ai/"}>Ch.ai</Link>
+                <div className="relative inline-block top-1.5">
+                    <Link className="relative z-10  flex gap-2 items-center" href={"https://ch.ai/"}>
+                        <Image src="/images/favicon.png" width={50} height={50} alt="logo"/>
+                        Ch.ai
+                    </Link>
                     <motion.div
-                        className="absolute rounded-xl px-2 w-[130px] scale-125 transform -ml-1 inset-0 bg-gradient-to-r from-pink-500 to-yellow-500"
+                        className="absolute -top-px rounded-[19px] h-[64px] w-[200px] scale-125 transform -ml-2 inset-0 bg-gradient-to-r from-pink-500 to-yellow-500"
                         initial={{scaleX: 0}}
                         animate={{scaleX: 1}}
                         transition={{duration: 0.8, delay: 0.5}}
@@ -117,7 +121,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.h2
-                className="mt-8 text-[#DBDADA]  w-[60%] font-extrabold text-2xl text-center"
+                className="mt-8 text-[#DBDADA]  w-[60%] text-2xl text-center"
                 initial={{y: 50, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
                 transition={{duration: 0.5, delay: 0.2}}

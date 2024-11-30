@@ -1,21 +1,24 @@
 import type {Metadata} from "next";
 import "./globals.css";
-import {Quicksand} from "@next/font/google";
+import localFont from 'next/font/local';
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
-const quicksand = Quicksand({
-    subsets: ['latin'],
-    display: 'swap',
-})
+const geistFont = localFont({
+    src: [
+        {
+            path: './fonts/Geist-Regular.woff2',
+            weight: '400',
+            style: 'normal',
+        },
+        {
+            path: './fonts/Geist-Bold.woff2',
+            weight: '700',
+            style: 'normal',
+        },
+        // Add other font weights and styles as needed
+    ],
+    variable: '--font-geist',
+});
+
 
 export const metadata: Metadata = {
     title: "CH-AI",
@@ -30,7 +33,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={quicksand.className}
+            className={geistFont.className}
         >
         {children}
         </body>
