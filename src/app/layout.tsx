@@ -19,7 +19,6 @@ const geistFont = localFont({
     variable: '--font-geist',
 });
 
-
 export const metadata: Metadata = {
     title: "Ch-ai",
     icons: "/images/favicon.png?v=2",

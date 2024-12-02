@@ -10,17 +10,17 @@ body {
 .app-container {
     background-size: cover;
     background-position: center 90%;
-    background-image: url("../../public/images/bg-image.jpg");
+    background-image: url("../../public/images/bg-image-new.jpg");
     background-repeat: no-repeat;
 
     /* Overlay a radial gradient that darkens the edges */
     background-blend-mode: multiply;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust this to change the overall darkness */
+    background-color: rgba(90, 90, 90, 0.5); /* Adjust this to change the overall darkness */
     background-image: radial-gradient(
             circle,
-            rgba(0, 0, 0, 0) 50%, /* Center is transparent */ rgba(0, 0, 0, 0.7) 100% /* Edges are darker */
+            rgba(0, 0, 0, 0) 60%, /* Center is transparent */ rgba(0, 0, 0, 0.7) 100% /* Edges are darker */
     ),
-    url("../../public/images/bg-image.jpg"); /* Your background image */
+    url("../../public/images/bg-image-new.jpg"); /* Your background image */
 }
 
 @layer utilities {
@@ -30,7 +30,7 @@ body {
 }
 
 @layer base {
-  :root {
+    :root {
         --background: 0 0% 100%;
         --foreground: 240 10% 3.9%;
         --card: 0 0% 100%;
@@ -57,7 +57,8 @@ body {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
     }
-  .dark {
+
+    .dark {
         --background: 240 10% 3.9%;
         --foreground: 0 0% 98%;
         --card: 240 10% 3.9%;
@@ -86,10 +87,11 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border;
+    * {
+        @apply border-border;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
     }
 }

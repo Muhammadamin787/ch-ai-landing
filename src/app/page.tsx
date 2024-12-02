@@ -7,7 +7,6 @@ import {Input} from "@/components/ui/input";
 import {useState} from "react";
 import {cn} from "@/lib/utils";
 import {SpinnerIcon} from "@/lib/icons";
-import Link from "next/link";
 import Image from "next/image";
 
 interface IValidationError {
@@ -94,28 +93,30 @@ export default function Home() {
 
     return (
         <div
-            className="h-screen flex items-center justify-center flex-col app-container">
+            className="h-screen relative flex items-center justify-center flex-col app-container">
+            <div className="absolute top-4 left-5">
+                <Image src="/images/favicon.png" width={50} height={50} alt="logo"/>
+            </div>
             <motion.h1
                 className="text-white -mt-12 tracking-wide leading-tight text-5xl w-[60%] text-center"
                 initial={{y: 50, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
                 transition={{duration: 0.9}}
             >
-                <div className="relative inline-block top-1.5">
-                    <Link className="relative z-10  flex gap-2 items-center" href={"https://ch.ai/"}>
-                        <Image src="/images/favicon.png" width={50} height={50} alt="logo"/>
-                        Ch.ai
-                    </Link>
-                    <motion.div
-                        className="absolute -top-px rounded-[19px] h-[64px] w-[200px] scale-125 transform -ml-2 inset-0 bg-gradient-to-r from-pink-500 to-yellow-500"
-                        initial={{scaleX: 0}}
-                        animate={{scaleX: 1}}
-                        transition={{duration: 0.8, delay: 0.5}}
-                        style={{originX: 0}}
-                    />
-                </div>
+                {/*<div className="relative inline-block top-1.5">*/}
+                {/*<Link className="relative z-10  flex gap-2 items-center" href={"https://ch.ai/"}>*/}
+                {/*<Image src="/images/favicon.png" width={50} height={50} alt="logo"/>*/}
+                {/*</Link>*/}
+                {/*<motion.div*/}
+                {/*    className="absolute -top-px rounded-[19px] h-[64px] w-[200px] scale-125 transform -ml-2 inset-0 bg-gradient-to-r from-pink-500 to-yellow-500"*/}
+                {/*    initial={{scaleX: 0}}*/}
+                {/*    animate={{scaleX: 1}}*/}
+                {/*    transition={{duration: 0.8, delay: 0.5}}*/}
+                {/*    style={{originX: 0}}*/}
+                {/*/>*/}
+                {/*</div>*/}
                 <span className="ml-5">
-                is an agentic AI platform and organizational
+                Chai is an agentic AI platform and organizational
                 intelligence.
                 </span>
             </motion.h1>
