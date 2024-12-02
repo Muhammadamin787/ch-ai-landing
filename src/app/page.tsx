@@ -8,6 +8,7 @@ import {useState} from "react";
 import {cn} from "@/lib/utils";
 import {SpinnerIcon} from "@/lib/icons";
 import Image from "next/image";
+import Link from "next/link";
 
 interface IValidationError {
     attr: string
@@ -96,6 +97,11 @@ export default function Home() {
             className="h-screen relative flex items-center justify-center flex-col app-container">
             <div className="absolute top-4 left-5">
                 <Image src="/images/favicon.png" width={50} height={50} alt="logo"/>
+            </div>
+            <div className="absolute top-4 right-5">
+                <Link href="https://chai.moneymentor.uz"
+                      className="bg-white text-black px-8 py-2 rounded-md hover:bg-[#eee] active:bg-[#ddd]">Log
+                    in</Link>
             </div>
             <motion.h1
                 className="text-white -mt-12 tracking-wide leading-tight text-5xl w-[60%] text-center"
