@@ -4,11 +4,12 @@ import {AnimatePresence, motion} from "framer-motion";
 import {Button} from "@/components/ui/button";
 import {Send, Sparkles, X} from "lucide-react";
 import {Input} from "@/components/ui/input";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {cn} from "@/lib/utils";
 import {SpinnerIcon} from "@/lib/icons";
 import Image from "next/image";
 import Link from "next/link";
+import Intercom from "@intercom/messenger-js-sdk";
 
 interface IValidationError {
     attr: string
@@ -29,6 +30,16 @@ export default function Home() {
     const [isSubmittedAlready, setIsSubmittedAlready] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
 
+
+    useEffect(() => {
+        Intercom({
+            app_id: "mlyig37v",
+            // user_id: "1",
+            // email: "qulpi@gmail.com",
+            // name: "Qulpiddin",
+            // created_at: Math.floor(Date.now() / 1000),
+        });
+    }, []);
 
     // Functions
     // const handleSubmit = (e: React.FormEvent) => {
